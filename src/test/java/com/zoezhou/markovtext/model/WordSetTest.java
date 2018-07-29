@@ -28,6 +28,5 @@ public class WordSetTest {
 
         Assert.assertEquals("apple", wordNode.getWord());
         Assert.assertEquals("banana", wordNode.getRandomNextWord());
-
     }
 }

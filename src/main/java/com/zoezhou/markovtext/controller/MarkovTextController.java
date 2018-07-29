@@ -27,7 +27,7 @@ public class MarkovTextController {
 
     @GetMapping("/")
     public String listForm(Model model)  {
-        return "uploadForm";
+        return "generateForm";
     }
 
     @PostMapping("/")
@@ -45,7 +45,7 @@ public class MarkovTextController {
 
         String output = markovChainService.getMarkovChainText(inputStream, prefix, outputSize);
 
-        String msg = "Generated with Prefix( " + prefix + " ): \n" + output;
+        String msg = prefix + " " + output;
         redirectAttributes.addFlashAttribute("message",
                 msg);
         return "redirect:/";

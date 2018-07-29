@@ -2,12 +2,9 @@ package com.zoezhou.markovtext.model;
 
 import com.zoezhou.markovtext.MarkovTextApplication;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 
@@ -19,14 +16,6 @@ import java.util.Set;
 @SpringBootTest(classes = MarkovTextApplication.class)
 @WebAppConfiguration
 public class WordNodeTest {
-
-    @MockBean
-    private RandomCollection randomCollection;
-
-    @Before
-    public void setUp() {
-        Mockito.when(randomCollection.next()).thenReturn("banana");
-    }
 
     @Test
     public void testWordNode() {
@@ -43,10 +32,9 @@ public class WordNodeTest {
         wordNode.getRandomNextWord();
 
         Map<String,Integer> nextWords = wordNode.getNextWords();
-        Assert.assertEquals(nextWords.size(), 2);
+        Assert.assertEquals(2, nextWords.size());
         Assert.assertTrue( nextWords.keySet().containsAll(nextkeySet));
-        Assert.assertEquals(nextWords.get("banana").intValue(), 3);
-        Assert.assertEquals(nextWords.get("orange").intValue(), 2);
-        Assert.assertEquals(wordNode.getRandomNextWord(), "banana");
+        Assert.assertEquals(3, nextWords.get("banana").intValue());
+        Assert.assertEquals(2, nextWords.get("orange").intValue());
     }
 }

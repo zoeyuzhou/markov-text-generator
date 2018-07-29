@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Markov Chain Text Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style type="text/css">
+      p {
+        font: 14px arial, sans-serif;
+      }
+      label {
+        font: 14px arial, sans-serif;
+      }
+      </style>
+</head>
+
+<body>
+<div>
+    <h1>Markov Chain Text Generator</h1>
+</div>
+<div>
+    <p>
+        This is a simple implementation of Markov chain text generator.
+        A Markov chain algorithm basically determines the next most probable suffix word for a given prefix.
+    </p>
+    <p>Follow below steps to try it: </p>
+    <p>1. Upload a text file which the generator will learn and generate from.</p>
+    <p>2. Enter the very first word as <b>"Prefix"</b> you want to generate from. For example: You</p>
+    <p>3. Enter the <b>"Number of Words"</b> you want to generate. For example: 100</p>
+    <p>4. Click <b>"Generate"</b> and wait....</p>
+    <p>----------------------------------------------------------------------</p>
+</div>
+<div>
+    <form method="POST" enctype="multipart/form-data" action="/">
+        <table>
+            <tr>
+                <td><label>File to upload:</label></td>
+                <td><input type="file" name="file" /></td>
+            </tr>
+            <tr>
+                <td><label>Prefix:</label></td>
+                <td><input type="text" name="prefix"></td>
+            </tr>
+            <tr>
+                <td><label>Number of Words:</label></td>
+                <td><input type="text" name="outputSize"></td>
+            </tr>
+            <tr>
+                <td><button type="submit">Generate</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div th:if="${message}">
+    <h2 style="color:#0E6655" th:text="${message}"/>
+</div>
+
+</body>
+</html>
